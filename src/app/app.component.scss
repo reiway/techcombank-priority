@@ -1,0 +1,216 @@
+.main {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    background: url('../assets/Landingpage_Desk\ JPG\ JPG.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    .logo {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .bg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .img-mobile {
+        display: none;
+    }
+
+    .logo_tech {
+        width: auto;
+        height: 80px;
+    }
+
+    .logo_30 {
+        width: auto;
+        height: 80px;
+    }
+
+    .content {
+        height: 100%;
+        height: fit-content;
+        color: white;
+        text-align: center;
+        width: 100%;
+        padding: 20px 40px;
+
+        .content-main {
+            width: 25%;
+            min-width: 300px;
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+        }
+
+        .title {
+            margin-bottom: 50px;
+            font-size: 15px;
+            line-height: 21px;
+        }
+
+        .suss_mess {
+            font-size: 15px !important;
+            font-weight: 800 !important;
+        }
+
+        .title-mobile {
+            display: none;
+        }
+
+        .item {
+            margin-top: 20px;
+
+            input {
+                margin: auto;
+                width: calc(100% - 40px);
+                margin-top: 20px;
+                background-color: white;
+                padding: 10px 20px;
+                border-radius: 20px;
+                display: block;
+                border: none;
+                font-size: 16px;
+            }
+        }
+
+        .sub {
+            font-size: 10px;
+
+            p {
+                margin-top: 0px;
+                margin-bottom: 20px;
+
+            }
+        }
+
+        button {
+            background-image: url(../assets/Capture.PNG);
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding: 10px 25px;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 10px;
+            background-color: brown;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .ticker {
+        text-align: center;
+
+        .info_div {
+            width: 100%;
+
+            .info {
+                border: 1px solid #533422;
+                border-bottom: none;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                padding: 10px;
+
+                p:first-child {
+                    margin-bottom: 26px;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                }
+            }
+
+            .info_type {
+                border: 1px solid;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                color: white;
+                padding: 10px;
+                font-size: 20px;
+            }
+        }
+
+        .qr {
+            width: 120px;
+            margin-top: 20px;
+        }
+
+        button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+
+    .bg-mobile {
+        background: url('../assets/Landingpage_Mobile_01\ background\ +\ logo\ JPG.jpg');
+        justify-content: center !important;
+        background-size: cover !important;
+    }
+
+    .bg {
+        display: none !important;
+    }
+
+    .title-mobile {
+        display: block !important;
+        font-size: 14px !important;
+        font-weight: 700;
+    }
+
+    .img-mobile {
+        display: block !important;
+        width: 100%;
+    }
+
+    .title {
+        display: none !important;
+    }
+
+    .content {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 0px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .logo {
+            width: 80% !important;
+
+        }
+
+        .content-main {
+            width: 80% !important;
+            transform: none !important;
+            position: inherit !important;
+        }
+
+        button {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+        }
+
+        .item {
+            font-size: 14px;
+            width: 80%;
+            margin: auto;
+            margin-top: 15px !important;
+
+            input {
+                margin-top: 10px !important;
+            }
+        }
+    }
+}
