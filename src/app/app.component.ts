@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -14,21 +15,21 @@ export class AppComponent {
       email: 'test@gmail.com',
       color: '#87603a',
       type: 'Bình Minh',
-      number: '1/24'
+      number: '1-2/24'
     }, {
       code: '2',
       name: 'Nguyễn Văn B',
       email: 'test@gmail.com',
       color: '#696969',
-      type: 'Hừng Đông',
-      number: '2/24'
+      type: ' RẠNG ĐÔNG',
+      number: '3-4/24'
     }, {
       code: '3',
       name: 'Nguyễn Văn C',
       email: 'test@gmail.com',
       color: '#ff0006',
       type: 'Rực Màu',
-      number: '3/24'
+      number: '5-6/24'
     },
   ];
   isHaveTicket = false;
@@ -37,6 +38,7 @@ export class AppComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -48,11 +50,11 @@ export class AppComponent {
   submit() {
     if (this.form.valid) {
       const find = this.data.find((ele) => ele.name == this.form.getRawValue().name && ele.code == this.form.getRawValue().code);
-      console.log(find);
-
       if (find) {
         this.user = find;
         this.isHaveTicket = true;
+      } else {
+        this.toastr.error('Thông tin chưa chính xác. Quý khách vui lòng kiểm tra lại.');
       }
     }
   }

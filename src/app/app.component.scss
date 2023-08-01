@@ -1,15 +1,22 @@
 .main {
-    width: 100%;
     height: 100%;
     overflow: auto;
     display: flex;
     background: url('../assets/Landingpage_Desk\ JPG\ JPG.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    aspect-ratio: 16 / 9;
+    margin-left: auto;
 
     .logo {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        width: calc(100vw - 80px);
+        left: 20px;
+        padding: 0px 20px;
+        top: 10px;
     }
 
     .bg {
@@ -23,7 +30,7 @@
 
     .logo_tech {
         width: auto;
-        height: 80px;
+        height: 60px;
     }
 
     .logo_30 {
@@ -40,11 +47,11 @@
         padding: 20px 40px;
 
         .content-main {
-            width: 25%;
+            width: 30%;
             min-width: 300px;
             position: absolute;
             top: 50%;
-            left: 25%;
+            left: 20%;
             transform: translate(-50%, -50%);
         }
 
@@ -55,12 +62,39 @@
         }
 
         .suss_mess {
-            font-size: 15px !important;
+            font-size: 17px !important;
             font-weight: 800 !important;
         }
 
         .title-mobile {
             display: none;
+        }
+
+        .div-timeline {
+            width: fit-content;
+            margin: auto;
+            margin-bottom: 10px;
+
+            .timeline {
+                display: grid;
+                grid-template-columns: 110px calc(100% - 10px - 110px);
+                gap: 10px;
+                font-size: 12px;
+
+                p {
+                    margin-top: 0px;
+                    margin-bottom: 2px;
+                    white-space: pre-wrap;
+                    text-align: left;
+                }
+
+                .time {
+                    text-align: right;
+                    font-weight: 700;
+                    white-space: nowrap;
+
+                }
+            }
         }
 
         .item {
@@ -84,15 +118,15 @@
 
             p {
                 margin-top: 0px;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
 
             }
         }
 
         button {
             background-image: url(../assets/Capture.PNG);
-            margin-top: 40px;
-            margin-bottom: 40px;
+            margin-top: 15px;
+            margin-bottom: 15px;
             padding: 10px 25px;
             font-size: 20px;
             font-weight: 600;
@@ -108,7 +142,8 @@
         text-align: center;
 
         .info_div {
-            width: 100%;
+            width: 75%;
+            margin: auto;
 
             .info {
                 border: 1px solid #533422;
@@ -118,9 +153,15 @@
                 padding: 10px;
 
                 p:first-child {
-                    margin-bottom: 26px;
-                    font-size: 18px;
+                    margin-bottom: 5px;
+                    font-size: 17px;
                     text-transform: uppercase;
+                }
+
+                p {
+                    margin-top: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
                 }
             }
 
@@ -152,6 +193,9 @@
 }
 
 @media only screen and (max-width: 992px) {
+    .main {
+        aspect-ratio: inherit !important;
+    }
 
     .bg-mobile {
         background: url('../assets/Landingpage_Mobile_01\ background\ +\ logo\ JPG.jpg');
@@ -188,7 +232,7 @@
 
         .logo {
             width: 80% !important;
-
+            position: inherit !important;
         }
 
         .content-main {

@@ -58,16 +58,70 @@
         <button>
           LƯU HÌNH ẢNH VÉ
         </button>
+        <div>
+          <p>
+            <strong>AGENDA</strong>
+          </p>
+          <div class='div-timeline'>
+            <div class='timeline'>
+              <p class='time'>
+                18:00 - 19:45
+              </p>
+              <p>Đón khách & Tham Gia Khu Trải Nghiệm</p>
+            </div>
+            <div class='timeline'>
+              <p class='time'>
+                20:00
+              </p>
+              <p>Bắt Đầu Chương Trình</p>
+            </div>
+            <div class='timeline'>
+              <p class='time'>20:00 - 20:10</p>
+              <p>Hé Mở Chương Mới Từ Techcombank Priority</p>
+            </div>
+            <div class='timeline'>
+              <p class='time'>
+                20:11 - 20:16
+              </p>
+              <p>Phát Biểu Khai Mạc</p>
+            </div>
+            <div class='timeline'>
+              <p class='time'>
+                20:16 - 21:58
+              </p>
+              <p>Các Tiết Mục Trình Diễn Ca Nhạc</p>
+            </div>
+            <div class='timeline'>
+              <p class='time'>
+                22:00
+              </p>
+              <p>Kết Thúc Chương Trình</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class='sub'>
         <p class='' *ngIf="!isHaveTicket">
           Lưu ý: Mục có dấu (*) là thông tin bắt buộc phải điền
         </p>
         <p class='suss_mess' *ngIf="isHaveTicket">
-          Chúng tôi Rất mong được đón tiếp quý khách
+          Chúng tôi rất mong <br> được đón tiếp quý khách!
         </p>
-        Trong trường hợp thồn tin đăng nhập chưa chính xác, Quý khách vui lòng liên hệ Chuyên Viên Quản Lý Khách Hàng:
-        hoặc gọi đến tổng đài <strong>180058822</strong> để được trợ giúp
+        <span *ngIf="isHaveTicket">
+          *Quý Khách vui lòng bảo mật thông tin số ghế để đảm bảo quyền lợi tham dự chương trình.
+          <br>
+          <br>
+          *Quý KH lưu ý, mỗi QR chỉ có thể check-in 1 lần cho mỗi ghế.
+          <br>
+          Ban tổ chức sẽ không chịu trách nhiệm nếu QR code đã được check-in
+          <br>
+          trong trường hợp KH không bảo mật được thông tin.
+        </span>
+        <span *ngIf="!isHaveTicket">
+          Trong trường hợp thông tin đăng nhập chưa chính xác, Quý khách vui lòng liên hệ Chuyên Viên Quản Lý Khách
+          Hàng:
+          hoặc gọi đến tổng đài <strong>180058822</strong> để được trợ giúp
+        </span>
       </div>
     </div>
   </div>
