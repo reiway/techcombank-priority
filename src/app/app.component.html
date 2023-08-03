@@ -7,9 +7,9 @@
     <div class='content-main'>
       <div *ngIf="!isHaveTicket">
         <p class='title'>
-          Chúc mừng quý khách là một trong những vị khách sở hữu cặp vé tham dự
+          Chúc mừng quý khách là một trong những vị khách sở hữu cặp vé
           <br>
-          Đại nhạc hội.
+          tham dự Đại nhạc hội.
           <br>
           Vui lòng điền thông tin sau để nhận vé:
         </p>
@@ -35,93 +35,139 @@
           </button>
         </form>
       </div>
-      <div *ngIf="isHaveTicket" class='ticker'>
-        <img class='img-mobile mb-20' src="../assets/cat dung cụm chữ thời khắc giao thời.png" alt="">
-        <div class='info_div'>
-          <div class='info'>
-            <p>
-              <strong>
-                {{user.name}}
-              </strong>
-            </p>
-            <p>MÃ ĐỊNH DANH: {{user.code}}</p>
-            <p>KHÁN ĐÀI: A1</p>
-            <p>SỐ GHẾ: {{user.number}}</p>
-          </div>
-          <div class='info_type' [ngStyle]="{ 'border-color': user.color, background: user.color}">
-            <strong>
-              {{user.type}}
-            </strong>
+      <img class='img-mobile mb-20' *ngIf="isHaveTicket" src="../assets/cat dung cụm chữ thời khắc giao thời.png"
+        alt="">
+      <div class='swiper-div' *ngIf="isHaveTicket">
+        <div class="swiper">
+          <div>
+            <swiper #swiper [slidesPerView]="1" [spaceBetween]="0" [centeredSlides]="true" [keyboard]="{enabled: true}"
+              [virtual]="true" class="my-swiper" (slideChange)="onSlideChange($event)">
+              <ng-template swiperSlide *ngFor="let data of user">
+                <div *ngIf="isHaveTicket" class='ticker swiper-slide-container'>
+                  <div class='info_div'>
+                    <div class='info'>
+                      <p>
+                        <strong>
+                          {{data?.name}}
+                        </strong>
+                      </p>
+                      <p>KHÁN ĐÀI: {{data?.params['Khán đài']}}</p>
+                      <p>SỐ GHẾ: {{data?.params['Số Ghế']}}</p>
+                    </div>
+                    <div class='info_type'
+                      [ngStyle]="{ 'border-color':  data.rank_data.color, background: data.rank_data.color}"
+                      *ngIf="data.rank_data">
+                      <strong>
+                        {{data.rank_data.name}}
+                      </strong>
+                    </div>
+                  </div>
+                  <img class='qr' src="../assets/qr.png" alt="">
+                </div>
+                <button *ngIf="isHaveTicket" (click)='downloadClick()'>
+                  LƯU HÌNH ẢNH VÉ
+                </button>
+                <div *ngIf="isHaveTicket">
+                  <p>
+                    <strong>AGENDA</strong>
+                  </p>
+                  <div class='div-timeline'>
+                    <div class='timeline'>
+                      <p class='time'>
+                        18:00 - 19:45
+                      </p>
+                      <p>Đón khách & Tham Gia Khu Trải Nghiệm</p>
+                    </div>
+                    <div class='timeline'>
+                      <p class='time'>
+                        20:00
+                      </p>
+                      <p>Bắt Đầu Chương Trình</p>
+                    </div>
+                    <div class='timeline'>
+                      <p class='time'>20:00 - 20:10</p>
+                      <p>Hé Mở Chương Mới Từ Techcombank Priority</p>
+                    </div>
+                    <div class='timeline'>
+                      <p class='time'>
+                        20:11 - 20:16
+                      </p>
+                      <p>Phát Biểu Khai Mạc</p>
+                    </div>
+                    <div class='timeline'>
+                      <p class='time'>
+                        20:16 - 21:58
+                      </p>
+                      <p>Các Tiết Mục Trình Diễn Ca Nhạc</p>
+                    </div>
+                    <div class='timeline'>
+                      <p class='time'>
+                        22:00
+                      </p>
+                      <p>Kết Thúc Chương Trình</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='sub'>
+                  <p class='' *ngIf="!isHaveTicket">
+                    Lưu ý: Mục có dấu (*) là thông tin bắt buộc phải điền
+                  </p>
+                  <p class='suss_mess' *ngIf="isHaveTicket">
+                    Chúng tôi rất mong <br> được đón tiếp quý khách!
+                  </p>
+                  <span *ngIf="isHaveTicket">
+                    *Quý Khách vui lòng bảo mật thông tin số ghế để đảm bảo quyền lợi tham dự chương trình.
+                    <br>
+                    <br>
+                    *Quý KH lưu ý, mỗi QR chỉ có thể check-in 1 lần cho mỗi ghế.
+                    <br>
+                    Ban tổ chức sẽ không chịu trách nhiệm nếu QR code đã được <span class='nowrap'>check-in</span>
+                    <br>
+                    trong trường hợp KH không bảo mật được thông tin.
+                  </span>
+                  <span *ngIf="!isHaveTicket">
+                    Trong trường hợp thông tin đăng nhập chưa chính xác, Quý khách vui lòng liên hệ Chuyên Viên Quản Lý
+                    Khách
+                    Hàng:
+                    hoặc gọi đến tổng đài <strong>180058822</strong> để được trợ giúp
+                  </span>
+                </div>
+              </ng-template>
+            </swiper>
           </div>
         </div>
-        <img class='qr' src="../assets/qr.png" alt="">
-        <button>
-          LƯU HÌNH ẢNH VÉ
-        </button>
-        <div>
-          <p>
-            <strong>AGENDA</strong>
-          </p>
-          <div class='div-timeline'>
-            <div class='timeline'>
-              <p class='time'>
-                18:00 - 19:45
-              </p>
-              <p>Đón khách & Tham Gia Khu Trải Nghiệm</p>
-            </div>
-            <div class='timeline'>
-              <p class='time'>
-                20:00
-              </p>
-              <p>Bắt Đầu Chương Trình</p>
-            </div>
-            <div class='timeline'>
-              <p class='time'>20:00 - 20:10</p>
-              <p>Hé Mở Chương Mới Từ Techcombank Priority</p>
-            </div>
-            <div class='timeline'>
-              <p class='time'>
-                20:11 - 20:16
-              </p>
-              <p>Phát Biểu Khai Mạc</p>
-            </div>
-            <div class='timeline'>
-              <p class='time'>
-                20:16 - 21:58
-              </p>
-              <p>Các Tiết Mục Trình Diễn Ca Nhạc</p>
-            </div>
-            <div class='timeline'>
-              <p class='time'>
-                22:00
-              </p>
-              <p>Kết Thúc Chương Trình</p>
+        <div class='next' (click)="slidePrev()" *ngIf="isHaveTicket && slide === 2 && user.length >= 2">
+          <div class="scrolldown-container">
+            <div class="scrolldown-btn">
+              <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="60px"
+                viewbox="0 0 50 80" enable-background="new 0 0 50 80" xml:space="preserve">
+                <path class="first-path" fill="#FFFFFF"
+                  d="M24.752,79.182c-0.397,0-0.752-0.154-1.06-0.463L2.207,57.234c-0.306-0.305-0.458-0.656-0.458-1.057                  s0.152-0.752,0.458-1.059l2.305-2.305c0.309-0.309,0.663-0.461,1.06-0.461c0.398,0,0.752,0.152,1.061,0.461l18.119,18.119                  l18.122-18.119c0.306-0.309,0.657-0.461,1.057-0.461c0.402,0,0.753,0.152,1.059,0.461l2.306,2.305                  c0.308,0.307,0.461,0.658,0.461,1.059s-0.153,0.752-0.461,1.057L25.813,78.719C25.504,79.027,25.15,79.182,24.752,79.182z">
+                </path>
+                <path class="second-path" fill="#FFFFFF"
+                  d="M24.752,58.25c-0.397,0-0.752-0.154-1.06-0.463L2.207,36.303c-0.306-0.304-0.458-0.655-0.458-1.057                  c0-0.4,0.152-0.752,0.458-1.058l2.305-2.305c0.309-0.308,0.663-0.461,1.06-0.461c0.398,0,0.752,0.153,1.061,0.461l18.119,18.12                  l18.122-18.12c0.306-0.308,0.657-0.461,1.057-0.461c0.402,0,0.753,0.153,1.059,0.461l2.306,2.305                  c0.308,0.306,0.461,0.657,0.461,1.058c0,0.401-0.153,0.753-0.461,1.057L25.813,57.787C25.504,58.096,25.15,58.25,24.752,58.25z">
+                </path>
+              </svg>
             </div>
           </div>
         </div>
-      </div>
-      <div class='sub'>
-        <p class='' *ngIf="!isHaveTicket">
-          Lưu ý: Mục có dấu (*) là thông tin bắt buộc phải điền
-        </p>
-        <p class='suss_mess' *ngIf="isHaveTicket">
-          Chúng tôi rất mong <br> được đón tiếp quý khách!
-        </p>
-        <span *ngIf="isHaveTicket">
-          *Quý Khách vui lòng bảo mật thông tin số ghế để đảm bảo quyền lợi tham dự chương trình.
-          <br>
-          <br>
-          *Quý KH lưu ý, mỗi QR chỉ có thể check-in 1 lần cho mỗi ghế.
-          <br>
-          Ban tổ chức sẽ không chịu trách nhiệm nếu QR code đã được check-in
-          <br>
-          trong trường hợp KH không bảo mật được thông tin.
-        </span>
-        <span *ngIf="!isHaveTicket">
-          Trong trường hợp thông tin đăng nhập chưa chính xác, Quý khách vui lòng liên hệ Chuyên Viên Quản Lý Khách
-          Hàng:
-          hoặc gọi đến tổng đài <strong>180058822</strong> để được trợ giúp
-        </span>
+        <div class='prev' (click)="slideNext()" *ngIf="isHaveTicket && slide === 1 && user.length >= 2">
+          <div class="scrolldown-container">
+            <div class="scrolldown-btn">
+              <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="60px"
+                viewbox="0 0 50 80" enable-background="new 0 0 50 80" xml:space="preserve">
+                <path class="first-path" fill="#FFFFFF"
+                  d="M24.752,79.182c-0.397,0-0.752-0.154-1.06-0.463L2.207,57.234c-0.306-0.305-0.458-0.656-0.458-1.057                  s0.152-0.752,0.458-1.059l2.305-2.305c0.309-0.309,0.663-0.461,1.06-0.461c0.398,0,0.752,0.152,1.061,0.461l18.119,18.119                  l18.122-18.119c0.306-0.309,0.657-0.461,1.057-0.461c0.402,0,0.753,0.152,1.059,0.461l2.306,2.305                  c0.308,0.307,0.461,0.658,0.461,1.059s-0.153,0.752-0.461,1.057L25.813,78.719C25.504,79.027,25.15,79.182,24.752,79.182z">
+                </path>
+                <path class="second-path" fill="#FFFFFF"
+                  d="M24.752,58.25c-0.397,0-0.752-0.154-1.06-0.463L2.207,36.303c-0.306-0.304-0.458-0.655-0.458-1.057                  c0-0.4,0.152-0.752,0.458-1.058l2.305-2.305c0.309-0.308,0.663-0.461,1.06-0.461c0.398,0,0.752,0.153,1.061,0.461l18.119,18.12                  l18.122-18.12c0.306-0.308,0.657-0.461,1.057-0.461c0.402,0,0.753,0.153,1.059,0.461l2.306,2.305                  c0.308,0.306,0.461,0.657,0.461,1.058c0,0.401-0.153,0.753-0.461,1.057L25.813,57.787C25.504,58.096,25.15,58.25,24.752,58.25z">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
