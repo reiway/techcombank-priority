@@ -13,7 +13,7 @@ SwiperCore.use([Keyboard, Pagination, Navigation, Virtual]);
 })
 export class AppComponent {
   @ViewChild('swiper', { static: false }) swiper!: SwiperComponent;
-
+  loading = false;
   data = [
     {
       code: '1',
@@ -80,6 +80,7 @@ export class AppComponent {
   }
 
   download(user: any) {
+    this.loading = true;
     this.http.get('https://api.dev.qrclc.com/api/ticket/public/get', {
       params: {
         guest_code: user.code,
@@ -99,6 +100,8 @@ export class AppComponent {
 
       document.body.removeChild(anchorElement);
       window.URL.revokeObjectURL(href);
+      this.loading = false;
+      this.toastr.success('Đã lưu vé thành công');
     })
   }
 
@@ -117,6 +120,7 @@ export class AppComponent {
       // } else {
       //   
       // }
+      this.loading = true;
       this.getData().subscribe((res: any) => {
         if (res?.data) {
           this.user = res.data.map((ele: any) => {
@@ -126,11 +130,13 @@ export class AppComponent {
             }
           });
           this.isHaveTicket = true;
+          this.loading = false;
         } else {
           this.toastr.error('Thông tin chưa chính xác. Quý khách vui lòng kiểm tra lại.');
         }
       }, () => {
         this.toastr.error('Thông tin chưa chính xác. Quý khách vui lòng kiểm tra lại.');
+        this.loading = false;
       })
     }
   }

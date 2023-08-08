@@ -31,12 +31,12 @@
 
     .logo_tech {
         width: auto;
-        height: 60px;
+        height: 40px;
     }
 
     .logo_30 {
         width: auto;
-        height: 80px;
+        height: 50px;
     }
 
     .content {
@@ -216,7 +216,9 @@
 
     .img-mobile {
         display: block !important;
-        width: 100%;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 16px;
     }
 
     .title {
@@ -423,4 +425,31 @@
     }
 }
 
-;
+.loading {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background: black;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+    svg {
+        animation: rotation 2s infinite linear;
+        height: 50px;
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
