@@ -286,6 +286,16 @@
     left: 20px;
     transform: translate(-50%, -50%) rotate(90deg);
     z-index: 1000;
+
+    span {
+        position: absolute;
+        transform: rotate(-90deg);
+        width: -moz-fit-content;
+        width: fit-content;
+        white-space: nowrap;
+        left: 60%;
+        top: 40%;
+    }
 }
 
 .prev {
@@ -298,6 +308,14 @@
     z-index: 1000;
     font-style: normal;
 
+    span {
+        position: absolute;
+        transform: rotate(91deg);
+        width: fit-content;
+        white-space: nowrap;
+        left: -100%;
+        top: 40%;
+    }
 }
 
 .nowrap {
@@ -452,6 +470,10 @@
         animation: rotation 2s infinite linear;
         height: 50px;
     }
+}
+
+.suss_mess_s {
+    font-size: 15px;
 }
 
 @keyframes rotation {
