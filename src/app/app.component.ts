@@ -129,6 +129,10 @@ export class AppComponent {
               rank_data: res.ranks.find((rank: any) => rank.id === ele.rank_id)
             }
           });
+          if (res?.msg) {
+            this.toastr.warning(res.msg);
+
+          }
           this.isHaveTicket = true;
           this.loading = false;
         } else {
