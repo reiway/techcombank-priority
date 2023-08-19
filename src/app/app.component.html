@@ -63,7 +63,9 @@
                       </strong>
                     </div>
                   </div>
-                  <img class='qr' src="../assets/qr.png" alt="">
+                  <div class="qr">
+                    <qrcode [qrdata]="data.code" [width]="120" [errorCorrectionLevel]="'M'"></qrcode>
+                  </div>
                 </div>
                 <p>
                   {{index + 1}} / {{user.length}}
